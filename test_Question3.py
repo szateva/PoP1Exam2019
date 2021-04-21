@@ -4,7 +4,7 @@ from Question3 import *
 
 ap789 = Airplane(0, 0, 10, 3000)
 
-def test_go_to():
+def test_goto():
     assert ap789.goto(95, 70) == True
 def test_position():
     assert ap789.position[0] == 95 and ap789.position[1] == 70

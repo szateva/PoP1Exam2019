@@ -21,3 +21,25 @@ ap789 = Airplane(0, 0, 10, 3000)
 assert ap789.goto(95,70) == True
 assert ap789.position[0] == 95 and ap789.position[1]==70
 assert abs(ap789.fuel_level - 1819.96) < 0.01 """
+import math
+
+class Airplane:
+    def __init__(self, initX, initY, cons, init_fuel):
+        self.position = (initX, initY)
+        self.consumption = cons
+        self.fuel_level = init_fuel
+
+    def goto(self, X, Y):
+        disX = X - self.position[0]
+        disY = Y - self.position[1]
+        distance_to_goto = math.sqrt(disX**2 + disY**2)
+        dis_can_goto = self.fuel_level / self.consumption
+        if distance_to_goto <= dis_can_goto:
+            self.position = (X, Y)
+            self.fuel_level -= (self.consumption * distance_to_goto)
+            return True
+        else:
+            return False
+
+    def refuel(self, fuel_added):
+        self.fuel_level += fuel_added
