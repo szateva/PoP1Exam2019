@@ -33,8 +33,8 @@ class Airplane:
         disX = X - self.position[0]
         disY = Y - self.position[1]
         distance_to_goto = math.sqrt(disX**2 + disY**2)
-        dis_can_goto = self.fuel_level / self.consumption
-        if distance_to_goto <= dis_can_goto:
+        dist_can_goto = self.fuel_level / self.consumption
+        if distance_to_goto <= dist_can_goto:
             self.position = (X, Y)
             self.fuel_level -= (self.consumption * distance_to_goto)
             return True
